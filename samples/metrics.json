@@ -1,0 +1,14 @@
+{
+    "class_names": [
+        "Potato___Early_blight",
+        "Potato___Late_blight",
+        "Potato___healthy"
+    ],
+    "img_size": 224,
+    "metrics": {
+        "accuracy": 0.9069767594337463,
+        "precision": 0.9948979616165161,
+        "recall": 0.9069767594337463,
+        "f1_score": 0.9489050690474863
+    }
+}

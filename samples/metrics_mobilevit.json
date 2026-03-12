@@ -1,0 +1,15 @@
+{
+    "class_names": [
+        "adenocarcinoma_left.lower.lobe_T2_N0_M0_Ib",
+        "large.cell.carcinoma_left.hilum_T2_N2_M0_IIIa",
+        "normal",
+        "squamous.cell.carcinoma_left.hilum_T1_N2_M0_IIIa"
+    ],
+    "img_size": 224,
+    "metrics": {
+        "accuracy": 0.380952388048172,
+        "precision": 0.602381283,
+        "recall": 0.233213,
+        "f1_score": 0.3458483
+    }
+}

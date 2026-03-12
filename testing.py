@@ -3,11 +3,13 @@ import numpy as np
 from keras.preprocessing import image
 import json
 from src.constant.constants import MODEL_PATH, METRICS_PATH
+from keras.applications.efficientnet import preprocess_input
+from keras.models import load_model
 
 class PotatoDiseaseClassifier:
     def __init__(self, model_path, info_path):
         # Cargar modelo
-        self.model = tf.keras.models.load_model(model_path)
+        self.model = load_model(model_path)
         
         # Cargar información
         with open(info_path, 'r') as f:
@@ -26,7 +28,7 @@ class PotatoDiseaseClassifier:
         img_array = np.expand_dims(img_array, axis=0)
         
         # Preprocesar
-        img_array = tf.keras.applications.efficientnet.preprocess_input(img_array)
+        img_array = preprocess_input(img_array)
         
         # Predecir
         predictions = self.model.predict(img_array, verbose=0)

@@ -17,12 +17,13 @@ def main():
   
   ## cargamos datos
   print("Cargando datos...")
-  train_dataset, test_dataset, class_names = load_data(DATASET_PATH, IMG_SIZE, BATCH_SIZE)
+  train_dataset, val_dataset, test_dataset, class_names = load_data(DATASET_PATH, IMG_SIZE, BATCH_SIZE)
   
   ## preparamos dataset
   print("Preparando dataset...")
   data_augmentation = create_data_augmentation()
   train_dataset = prepare_dataset(train_dataset, data_augmentation, training=True)
+  val_dataset = prepare_dataset(val_dataset, training=False)
   test_dataset = prepare_dataset(test_dataset, training=False)
   
   # creamos el modelo
@@ -32,7 +33,7 @@ def main():
   
   # entrenamos el modelo
   print("Entrenando modelo...")
-  model, history = train_model(model, base_model, train_dataset, test_dataset)
+  model, history = train_model(model, base_model, train_dataset, val_dataset)
   
   ## evaluamos y guardamos el modelo
   print("Evaluando y guardando modelo...")

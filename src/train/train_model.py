@@ -5,7 +5,7 @@ from keras.optimizers import Adam
 from keras.metrics import Precision, Recall, CategoricalAccuracy
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
 
-def train_model(model: Model, base_model: Model, train_dataset: tf.data.Dataset, test_dataset: tf.data.Dataset):
+def train_model(model: Model, base_model: Model, train_dataset: tf.data.Dataset, val_dataset: tf.data.Dataset):
   
   model.compile(
     optimizer=Adam(learning_rate=LEARNING_RATE),
@@ -24,7 +24,7 @@ def train_model(model: Model, base_model: Model, train_dataset: tf.data.Dataset,
   
   print(f"Empezamos con el cabezal del modelo base...")
   
-  history1 = model.fit(train_dataset, validation_data=test_dataset, epochs=EPOCHS, callbacks=callbacks)
+  history1 = model.fit(train_dataset, validation_data=val_dataset, epochs=EPOCHS, callbacks=callbacks)
   
   print(f"Segunda fase de entrenamiento...")
   
@@ -40,7 +40,7 @@ def train_model(model: Model, base_model: Model, train_dataset: tf.data.Dataset,
       metrics=['accuracy', Precision(), Recall(), CategoricalAccuracy()],
   )
   
-  history2 = model.fit(train_dataset, validation_data=test_dataset, epochs=EPOCHS, callbacks=callbacks)
+  history2 = model.fit(train_dataset, validation_data=val_dataset, epochs=EPOCHS, callbacks=callbacks)
   
   # combinamos las historias
   

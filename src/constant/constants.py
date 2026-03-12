@@ -2,7 +2,7 @@ from pathlib import Path
 import tensorflow as tf
 
 # nombre del modelo entrenado
-MODEL_NAME = "model.keras"
+MODEL_NAME = "model_efficient.keras"
 
 # ruta del modelo entrenado
 MODEL_PATH = Path(__file__).parent.parent.parent / "model" / MODEL_NAME
